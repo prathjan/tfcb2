@@ -29,7 +29,7 @@ data "external" "appd" {
   query = {
     appname = "${var.appname}" 
     accesskey = "${var.accesskey}" 
-    jver = "${var.javaver}" 
+#    jver = "${var.javaver}" 
   }
 #    clsecrt = "${var.clsecrt}" 
 #    zerover = "${var.zerover}" 

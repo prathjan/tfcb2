@@ -3,13 +3,14 @@
 
 function parse_input() {
   # jq reads from stdin so we don't have to set up any inputs, but let's validate the outputs
-  eval "$(jq -r '@sh "export APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) JVER=\(.jver)"')"
+  eval "$(jq -r '@sh "export APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) "')"
+  #eval "$(jq -r '@sh "export APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) JVER=\(.jver)"')"
   if [[ -z "${APP_NAME}" ]]; then export APP_NAME=none; fi
   if [[ -z "${ACC_KEY}" ]]; then export ACC_KEY=none; fi
-  if [[ -z "${JVER}" ]]; then export JVER=none; fi
 }
 
 
+  #if [[ -z "${JVER}" ]]; then export JVER=none; fi
 
 
 
@@ -36,8 +37,8 @@ temp="${temp#\"}"
 #echo "$temp"
 
 #download="$(curl -s --location --request GET 'https://devnet.saas.appdynamics.com/zero/v1beta/install/downloadCommand?javaVersion=latest&machineVersion=latest&infraVersion=latest&zeroVersion=latest&multiline=false' \
-download="$(curl -s --location --request GET "https://devnet.saas.appdynamics.com/zero/v1beta/install/downloadCommand?javaVersion=${JVER}&machineVersion=latest&infraVersion=latest&zeroVersion=latest&multiline=false" \
 --header "Authorization: Bearer ${temp}" --data-raw '')"
+#download="$(curl -s --location --request GET "https://devnet.saas.appdynamics.com/zero/v1beta/install/downloadCommand?javaVersion=${JVER}&machineVersion=latest&infraVersion=latest&zeroVersion=latest&multiline=false" \
 
 #install="$(curl -s --location --request GET "https://devnet.saas.appdynamics.com/zero/v1beta/install/installCommand?sudo=true&multiline=false&application="yyy"&accessKey="yyy"&serviceUrl=https://devnet.saas.appdynamics.com" \
 #--header "Authorization: Bearer ${temp}" --data-raw '')"
