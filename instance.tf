@@ -96,6 +96,7 @@ resource "vsphere_virtual_machine" "vm_deploy" {
 }
 
 
+/*
 resource "null_resource" "vm_node_init" {
   count = "${var.vm_count}"
 
@@ -216,7 +217,7 @@ resource "null_resource" "vm_node_init" {
       agent = false
     }
   }
-
+*/
 
 #  provisioner "remote-exec" {
 #    inline = [
@@ -231,7 +232,7 @@ resource "null_resource" "vm_node_init" {
 #      agent = false
 #    }
 #  }
-}
+#}
 
 output "vm_deploy" {
   value = [vsphere_virtual_machine.vm_deploy.*.name, vsphere_virtual_machine.vm_deploy.*.default_ip_address]
