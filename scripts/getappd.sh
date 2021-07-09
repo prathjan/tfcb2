@@ -1,14 +1,12 @@
 #!/bin/bash
 
-
 function parse_input() {
   # jq reads from stdin so we don't have to set up any inputs, but let's validate the outputs
-  eval "$(jq -r '@sh "export APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) "')"
+  eval "$(jq -r '@sh "APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) "')"
   #eval "$(jq -r '@sh "export APP_NAME=\(.appname)  ACC_KEY=\(.accesskey) JVER=\(.jver)"')"
   if [[ -z "${APP_NAME}" ]]; then export APP_NAME=none; fi
   if [[ -z "${ACC_KEY}" ]]; then export ACC_KEY=none; fi
 }
-
 
   #if [[ -z "${JVER}" ]]; then export JVER=none; fi
 
